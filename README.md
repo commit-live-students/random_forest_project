@@ -9,4 +9,14 @@ In this project you will apply the knowledge of Random forest which consists of 
 - Hyperparameters for Random Forests
 
 ## What are we going to do in the project?
-- You are going to learn how to perform 
+- You are going to learn how to perform GridSearch on RandomForestClassifier Model.
+- Also how to fit the model previously used in order to predict on test dataset.
+
+## What will you learn by doing this project ?
+- Learn to build and execute RandomForestClassifier on GridSearch method and interpret the results.
+- Learn to use your model to predict on unseen data and derive insights by measuring accuracy, confusion matrix etc of your model
+performance.
+
+### DataSet
+- Data set used previously in logistic regression project which is named as Loan Prediction is used here.
+
