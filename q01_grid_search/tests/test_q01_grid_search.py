@@ -28,10 +28,10 @@ class TestGridSearch(TestCase):
 
         # Return data types
         rfc = RandomForestClassifier(oob_score=True, random_state=9)
-        grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
+        grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
 
         self.assertIsInstance(grid_param, tuple,
-                              "Expected data type for return value is `list`, you are returning %s" % (
+                              "Expected data type for return value is `tuple`, you are returning %s" % (
                                   type(grid_param)))
 
         self.assertIsInstance(grid_score, np.ndarray,
