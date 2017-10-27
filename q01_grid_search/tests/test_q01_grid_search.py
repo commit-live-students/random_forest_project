@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
 import numpy as np
 
-loan_data = pd.read_csv('data\loan_prediction.csv')
+loan_data = pd.read_csv('data/loan_prediction.csv')
 X_bal = loan_data.iloc[:, :-1]
 y_bal = loan_data.iloc[:, -1]
 
