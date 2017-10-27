@@ -2,7 +2,6 @@ from unittest import TestCase
 from ..build import fit
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from greyatomlib.random_forest_project.q01_grid_search.build import grid_search
 from inspect import getargspec
 import pandas as pd
 import numpy
@@ -17,7 +16,7 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
               "n_estimators": [10, 50, 120],
               "max_depth": [40, 20, 10],
               "max_leaf_nodes": [5, 10, 2]}
-grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
+
 
 
 class TestFit(TestCase):
@@ -36,7 +35,7 @@ class TestFit(TestCase):
 
         self.assertIsInstance(class_report, unicode,
                               "Expected data type for return value is `unicode`, you are returning %s" % (
-                                  type(grid_score)))
+                                  type(class_report)))
 
         self.assertIsInstance(accuracy_score, numpy.float64,
                               "Expected data type for return value is `numpy.float64`, you are returning %s" % (
