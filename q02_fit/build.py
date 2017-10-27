@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
 
-loan_data = pd.read_csv('data\loan_prediction.csv')
+loan_data = pd.read_csv('data/loan_prediction.csv')
 X_bal = loan_data.iloc[:, :-1]
 y_bal = loan_data.iloc[:, -1]
 
