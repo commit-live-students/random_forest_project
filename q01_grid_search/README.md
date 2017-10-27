@@ -31,6 +31,7 @@ param_grid =
 ### Returns:
 | Return | dtype | description |
 | --- | --- | --- | 
+| model | sklearn.model_selection.$_$search.GridSearchCV | returns list containing values of param_grid at each iteration|
 | variable1 | list | returns list containing values of param_grid at each iteration|
 | variable2 | numpy.ndarray | returns score for each param_grid |
 
