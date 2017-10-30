@@ -17,8 +17,11 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
               "max_depth": [40, 20, 10],
               "max_leaf_nodes": [5, 10, 2]}
 
-
+rfc = RandomForestClassifier(oob_score=True, random_state=9)
+def grid_search (X_train,y_train,model,param_grid,cv = 3):
+    grid = GridSearchCV (rfc,param_grid=param_grid,cv=cv)
+    grid.fit(X_train,y_train)
+    variable1 = grid.cv_results_['params']
+    variable2 = grid.cv_results_['mean_test_score']
+    return grid,variable1,variable2
 # Write your solution here :
-
-
-
