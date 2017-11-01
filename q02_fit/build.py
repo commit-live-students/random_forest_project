@@ -6,7 +6,6 @@ from sklearn.metrics import confusion_matrix, accuracy_score, classification_rep
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
-
 loan_data = pd.read_csv('data/loan_prediction.csv')
 X_bal = loan_data.iloc[:, :-1]
 y_bal = loan_data.iloc[:, -1]
@@ -20,7 +19,9 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
 
-
-# Write your solution here :
-
-
+def fit(X_test,y_test):
+    ypred=grid.predict(X_test)
+    acc_sc=accuracy_score(y_test,ypred)
+    cla_rep=classification_report(y_test,ypred)
+    con_mat=confusion_matrix(y_test,ypred)
+    return con_mat,cla_rep,acc_sc
