@@ -19,6 +19,10 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 
 # Write your solution here :
-
-
-
+def grid_search(X_train, y_train, model, param_grid, cv=3):
+    gridsearch = GridSearchCV(estimator=model, param_grid=param_grid, cv=cv, return_train_score=True)
+    gridsearch.fit(X_train,y_train)
+    model_param = gridsearch.cv_results_["params"]
+    model_score = gridsearch.cv_results_["mean_test_score"]
+    #model_score = np.array(model_score)
+    return gridsearch, model_param, model_score
