@@ -22,5 +22,13 @@ grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv
 
 
 # Write your solution here :
-
-
+def fit(X_test,y_test):
+    y_pred=grid.predict(X_test)
+    sc=accuracy_score(y_pred,y_test)
+    #print type(sc)
+    c=confusion_matrix(y_test,y_pred)
+    a=classification_report(y_test,y_pred)
+    #print type(a)
+    #print type(c)
+    return c,a,sc
+# print fit(X_test,y_test)
