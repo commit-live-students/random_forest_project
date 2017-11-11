@@ -1,3 +1,4 @@
+# %load q02_fit/build.py
 # Default imports
 
 import pandas as pd
@@ -19,8 +20,10 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
               "max_leaf_nodes": [5, 10, 2]}
 
 grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
-
-
+def fit(X_test,y_test):
+    y_pred=grid.predict(X_test)
+    acc=accuracy_score(y_test,y_pred)
+    cm=confusion_matrix(y_test,y_pred)
+    cr=classification_report(y_test,y_pred)
+    return cm,cr,acc
 # Write your solution here :
-
-
