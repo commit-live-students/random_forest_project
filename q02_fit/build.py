@@ -1,3 +1,5 @@
+
+				# %load q02_fit/build.py
 # Default imports
 
 import pandas as pd
@@ -23,4 +25,16 @@ grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv
 
 # Write your solution here :
 
+def fit(X_test,y_test):
+    y_pred=grid.predict(X_test)
+    acc_score=accuracy_score(y_test,y_pred)
+    conf_matrix=confusion_matrix(y_test,y_pred)
+    class_report=classification_report(y_test,y_pred)
+    #print(acc_score, conf_matrix,class_report)
+    return  conf_matrix,class_report,acc_score
 
+# conf_matrix, class_report, accuracy=fit(X_test,y_test)
+# print(type(conf_matrix))
+# print(type(class_report))
+# print(type(accuracy))
+# print(accuracy)
