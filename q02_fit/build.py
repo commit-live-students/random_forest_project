@@ -20,7 +20,10 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
 
+def fit(X_test,y_test):
+    y_prd = grid.predict(X_test)
+    acc = accuracy_score(y_test,y_prd)
+    clf = classification_report(y_test,y_prd)
+    cf = confusion_matrix(y_test,y_prd)
 
-# Write your solution here :
-
-
+    return cf,clf,acc
