@@ -1,3 +1,4 @@
+# %load q01_grid_search/build.py
 # Default imports
 
 import warnings
@@ -19,6 +20,13 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 
 # Write your solution here :
+def grid_search (X_train, y_train,model,param_grid,cv=3):
+    clf=GridSearchCV(model,param_grid,cv=3)
+    c=clf.fit(X_train,y_train)
+    x=c.cv_results_
+    l=[]
+    y=x['params']
+    z=x['mean_test_score']
+    return clf,y,z
 
-
-
+#grid_search (X_train, y_train,model,param_grid,cv=3)
