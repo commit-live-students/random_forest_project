@@ -30,7 +30,7 @@ class TestGridSearch(TestCase):
     def test_grid_search_grid_param_type(self):  # Return data types
         rfc = RandomForestClassifier(oob_score=True, random_state=9)
         grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
-        self.assertIsInstance(grid_param, list,
+        self.assertIsInstance(grid_param, tuple,
                               "Expected data type for return value is `tuple`, you are returning %s" % (
                                   type(grid_param)))
 
@@ -88,3 +88,4 @@ class TestGridSearch(TestCase):
                 expected_index = expected_param.index(grid_param[i])
                 self.assertAlmostEqual(grid_score[i], expected_score[expected_index], 3, "Expected values does not match \
                 the given values")
+
