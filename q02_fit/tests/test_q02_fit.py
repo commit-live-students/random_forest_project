@@ -36,8 +36,8 @@ class TestFit(TestCase):
                                   type(conf_matrix)))
 
     def test_fit_class_report_type(self):
-        conf_matrix, class_report, accuracy = fit(X_test, y_test)    
-        self.assertIsInstance(class_report, unicode,
+        conf_matrix, class_report, accuracy = fit(X_test, y_test)
+        self.assertIsInstance(class_report, str,
                               "Expected data type for return value is `str`, you are returning %s" % (
                                   type(class_report)))
 
@@ -51,3 +51,4 @@ class TestFit(TestCase):
         conf_matrix, class_report, accuracy = fit(X_test, y_test)
         self.assertAlmostEqual(accuracy, 0.778325123153, 3, "Return value of accuracy does not match expected "
                                                                   "value")
+
