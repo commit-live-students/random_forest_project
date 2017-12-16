@@ -19,4 +19,3 @@ performance.
 
 ### DataSet
 - Data set used previously in logistic regression project which is named as Loan Prediction is used here.
-
