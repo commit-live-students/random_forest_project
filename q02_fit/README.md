@@ -18,6 +18,7 @@
 
 | Return | dtype | description |
 | --- | --- | --- | 
-| variable1 |numpy.ndarray | accuracy_score of the model |
+| variable1 | numpy.float64 | confusion_matrix of the model |
 | variable2 | unicode | classification_report of the model |
-| variable3 | numpy.float64 | confusion_matrix of the model |
+| variable3 |numpy.ndarray | accuracy_score of the model |
+
