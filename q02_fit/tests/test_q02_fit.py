@@ -37,7 +37,7 @@ class TestFit(TestCase):
 
     def test_fit_class_report_type(self):
         conf_matrix, class_report, accuracy = fit(X_test, y_test)
-        self.assertIsInstance(class_report, str,
+        self.assertIsInstance(class_report, unicode,
                               "Expected data type for return value is `str`, you are returning %s" % (
                                   type(class_report)))
 
