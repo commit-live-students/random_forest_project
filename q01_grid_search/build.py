@@ -19,6 +19,8 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 
 # Write your solution here :
-
-
-
+def grid_search(X_train, y_train, model, param_grid, cv = 3):
+    grid_cv = GridSearchCV(model,param_grid=param_grid,cv=cv)
+    grid_cv.fit(X_train,y_train)
+    df = pd.DataFrame(grid_cv.grid_scores_)
+    return grid_cv, tuple(df['parameters']),df['mean_validation_score'].as_matrix()
