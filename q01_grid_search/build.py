@@ -18,7 +18,12 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
               "max_leaf_nodes": [5, 10, 2]}
 
 
-# Write your solution here :
+def grid_search(X_train, y_train, model, param_grid, cv=3):
+    clf = GridSearchCV(model,param_grid,cv=cv)
+    clf.fit(X_train,y_train)
 
-
-
+    results = pd.DataFrame( clf.grid_scores_)
+    model = clf
+    variable1 = tuple(results['parameters'])
+    variable2 = results['mean_validation_score'].as_matrix() # Returns numpy array
+    return model, variable1 , variable2
