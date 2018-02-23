@@ -35,12 +35,6 @@ class TestFit(TestCase):
                               "Expected data type for return value is `numpy.ndarray`, you are returning %s" % (
                                   type(conf_matrix)))
 
-    def test_fit_class_report_type(self):
-        conf_matrix, class_report, accuracy = fit(X_test, y_test)
-        self.assertIsInstance(class_report, unicode,
-                              "Expected data type for return value is `str`, you are returning %s" % (
-                                  type(class_report)))
-
     def test_fit_accuracy_type(self):
         conf_matrix, class_report, accuracy = fit(X_test, y_test)
         self.assertIsInstance(accuracy, numpy.float64,
