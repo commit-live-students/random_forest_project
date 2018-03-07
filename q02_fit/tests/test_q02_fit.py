@@ -3,7 +3,7 @@ from ..build import fit
 from sklearn.ensemble import RandomForestClassifier
 from greyatomlib.random_forest_project.q01_grid_search.build import grid_search
 from sklearn.model_selection import train_test_split
-from inspect import getargspec
+from inspect import getfullargspec
 import pandas as pd
 import numpy
 
@@ -22,11 +22,11 @@ grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv
 
 class TestFit(TestCase):
     def test_fit(self):  # Input parameters tests
-        args = getargspec(fit)
+        args = getfullargspec(fit)
         self.assertEqual(len(args[0]), 2, "Expected argument(s) %d, Given %d" % (2, len(args[0])))
 
     def test_fit_default(self):  # Input parameter defaults
-        args = getargspec(fit)
+        args = getfullargspec(fit)
         self.assertEqual(args[3], None, "Expected default values do not match given default values")
 
     def test_fit_conf_matrix_type(self):  # Return data types

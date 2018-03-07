@@ -20,5 +20,3 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 # Write your solution here :
 
-
-
