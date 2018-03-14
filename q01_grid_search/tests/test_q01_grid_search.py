@@ -1,5 +1,5 @@
 from unittest import TestCase
-from inspect import getargspec
+from inspect import getfullargspec
 from ..build import grid_search
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -20,17 +20,17 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 class TestGridSearch(TestCase):
     def test_grid_search(self):  # Input parameters tests
-        args = getargspec(grid_search)
+        args = getfullargspec(grid_search)
         self.assertEqual(len(args[0]), 5, "Expected argument(s) %d, Given %d" % (5, len(args[0])))
 
     def test_grid_search_default(self):  # Input parameter defaults
-        args = getargspec(grid_search)
+        args = getfullargspec(grid_search)
         self.assertEqual(args[3], (3,), "Expected default values do not match given default values")
 
     def test_grid_search_grid_param_type(self):  # Return data types
         rfc = RandomForestClassifier(oob_score=True, random_state=9)
         grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
-        self.assertIsInstance(grid_param, tuple,
+        self.assertIsInstance(grid_param, list,
                               "Expected data type for return value is `tuple`, you are returning %s" % (
                                   type(grid_param)))
 
