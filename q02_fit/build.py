@@ -21,7 +21,13 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
 
 
-# Write your solution here :
+def fit(X_test, y_test):
 
+    clf =  grid
+    clf.fit(X_train,y_train)
+    y_pred = clf.predict(X_test)
+    variable1 = confusion_matrix(y_test, y_pred)
+    variable2 = classification_report(y_test, y_pred)
+    variable3 = accuracy_score(y_test, y_pred)
 
-
+    return variable1, variable2, variable3
