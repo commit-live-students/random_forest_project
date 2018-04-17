@@ -3,6 +3,7 @@
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
@@ -19,4 +20,12 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
 
 
 # Write your solution here :
+model = RandomForestClassifier(random_state=9, oob_score=True)
+def grid_search(X_train, y_train, model, param_grid, cv=3):
+    search = GridSearchCV(estimator=model, param_grid=param_grid, cv=cv)
+    search.fit(X_train, y_train)
+    variable1 = list(search.cv_results_['params'])
+    variable2 = np.array(search.cv_results_['mean_test_score'])
+    return search, variable1, variable2
 
+grid_search(X_train, y_train, model, param_grid)
