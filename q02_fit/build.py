@@ -22,6 +22,8 @@ grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv
 
 
 # Write your solution here :
-
-
-
+def fit(X_test, y_test):
+    model = grid.best_estimator_
+    model.fit(X_train,y_train)
+    y_pred = grid.predict(X_test)
+    return confusion_matrix(y_test,y_pred), classification_report(y_test,y_pred) , accuracy_score(y_test, y_pred)
