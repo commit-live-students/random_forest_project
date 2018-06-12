@@ -32,7 +32,7 @@ class TestGridSearch(TestCase):
 
     def test_grid_search_grid_param_type(self):  # Return data types
         self.assertIsInstance(grid_param, list,
-                              "Expected data type for return value is `tuple`, you are returning %s" % (
+                              "Expected data type for return value is `list`, you are returning %s" % (
                                   type(grid_param)))
 
     def test_grid_search_grid_score_type(self):
