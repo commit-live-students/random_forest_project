@@ -16,6 +16,9 @@ param_grid = {"max_features": ['sqrt', 4, "log2"],
               "max_depth": [40, 20, 10],
               "max_leaf_nodes": [5, 10, 2]}
 
+rfc = RandomForestClassifier(oob_score=True, random_state=9)
+grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
+
 
 
 class TestGridSearch(TestCase):
@@ -28,35 +31,25 @@ class TestGridSearch(TestCase):
         self.assertEqual(args[3], (3,), "Expected default values do not match given default values")
 
     def test_grid_search_grid_param_type(self):  # Return data types
-        rfc = RandomForestClassifier(oob_score=True, random_state=9)
-        grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
         self.assertIsInstance(grid_param, list,
                               "Expected data type for return value is `tuple`, you are returning %s" % (
                                   type(grid_param)))
 
     def test_grid_search_grid_score_type(self):
-        rfc = RandomForestClassifier(oob_score=True, random_state=9)
-        grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
         self.assertIsInstance(grid_score, np.ndarray,
                               "Expected data type for return value is `numpy.ndarray`, you are returning %s" % (
                                   type(grid_score)))
 
 
     def test_grid_search_grid_param_values(self):  # Return value tests
-        rfc = RandomForestClassifier(oob_score=True, random_state=9)
-        grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
         self.assertEqual(np.shape(grid_param), (81,),
                          "Return value shape does not match expected value")
 
     def test_grid_search_grid_score_values(self):
-        rfc = RandomForestClassifier(oob_score=True, random_state=9)
-        grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
         self.assertEqual(np.shape(grid_score), (81,),
                          "Return value shape does not match expected value")
 
     def test_grid_search_expected_score_values(self):
-        rfc = RandomForestClassifier(oob_score=True, random_state=9)
-        grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv=3)
         expected_param = [{'max_features': 'sqrt', 'max_leaf_nodes': 5, 'n_estimators': 10, 'max_depth': 40},
                           {'max_features': 'sqrt', 'max_leaf_nodes': 5, 'n_estimators': 50, 'max_depth': 40},
                           {'max_features': 'sqrt', 'max_leaf_nodes': 5, 'n_estimators': 120, 'max_depth': 40},
