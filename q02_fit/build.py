@@ -35,4 +35,4 @@ def fit(X_test, y_test):
     return matrix, clr, accuracy
 
 
-
+fit(X_test, y_test)
