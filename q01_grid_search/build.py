@@ -24,7 +24,5 @@ def grid_search(X_train, y_train, clf, param_grid, cv=3):
     #optimized_grid = model(clf, cv_params = param_grid, cv = CV)
     grid_search.fit(X_train, y_train)
     return (grid_search, (grid_search.cv_results_['params']), (grid_search.cv_results_['mean_test_score']))
-    
-grid_search(X_train, y_train, clf, param_grid=param_grid, cv)
 
-
+grid_search(X_train, y_train, clf, param_grid=param_grid, cv=3)
