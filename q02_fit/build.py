@@ -22,6 +22,17 @@ grid, grid_param, grid_score = grid_search(X_train, y_train, rfc, param_grid, cv
 
 
 # Write your solution here :
+def fit(X_test, y_test):
+    print(grid.best_params_)
+    predicted = grid.predict(X_test)
+    predict = pd.DataFrame(predicted)
+    expected = y_test
+
+    matrix = confusion_matrix(expected, predict)
+    clr = classification_report(expected, predict)
+    accuracy = accuracy_score(expected, predict)
+
+    return matrix, clr, accuracy
 
 
-
+fit(X_test, y_test)
